@@ -1,3 +1,5 @@
+# Custom ODrive Firware for MKS-ODrive-Mini based on HW V3.6
+
 ![ODrive Logo](https://static1.squarespace.com/static/58aff26de4fcb53b5efd2f02/t/59bf2a7959cc6872bd68be7e/1505700483663/Odrive+logo+plus+text+black.png?format=1000w)
 
 This project is all about accurately driving brushless motors, for cheap. The aim is to make it possible to use inexpensive brushless motors in high performance robotics projects, like [this](https://www.youtube.com/watch?v=WT4E5nb3KtY).
@@ -23,3 +25,19 @@ Please refer to the [Developer Guide](https://docs.odriverobotics.com/developer-
  * [User Guide](https://docs.odriverobotics.com/)
  * [Forum](https://discourse.odriverobotics.com/)
  * [Chat](https://discourse.odriverobotics.com/t/come-chat-with-us/281)
+
+
+
+## *** Main Changes in this branch
+* The SW Firmware is 0.5.1 as this is best known firmware for this low cost ODrive alternative from other vendor.
+* The firmware is compiled for V3.6 56V varient board. If you  have other varient please recompile this firmware.
+* Added Encoder estimates to publish in the CAN bus alongside heartbeat msg
+* This chages mainly done for ODrive ROS2 package as there is no official support for V3.6 based hardware for encoder estimates.
+
+## *** Compiling instruction
+
+* Please make changes in the /Firmware/tup.config for the board varient as 'CONFIG_BOARD_VERSION=v3.6-56V'.
+
+* Under /Firmware use `$ make` command. 
+* If there is compiling issues follow the official guideline for proper libraries or tool e,g. arm compiler.
+* if you face issues with arm compiler follow this QA from https://askubuntu.com/questions/1243252/how-to-install-arm-none-eabi-gdb-on-ubuntu-20-04-lts-focal-fossa
