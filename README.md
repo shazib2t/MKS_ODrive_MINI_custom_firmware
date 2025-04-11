@@ -33,6 +33,7 @@ Please refer to the [Developer Guide](https://docs.odriverobotics.com/developer-
 * The firmware is compiled for V3.6 56V varient board. If you  have other varient please recompile this firmware.
 * Added Encoder estimates to publish in the CAN bus alongside heartbeat msg
 * This changes mainly done for ODrive ROS2 package as there is no official support for V3.6 based hardware for encoder estimates.
+* The odrive ros2 version that is changed for this firmware is located in my github and the link is here: [https://github.com/shazib2t/ros_odrive](https://github.com/shazib2t/ros_odrive)
 
 ## *** Compiling instruction
 
