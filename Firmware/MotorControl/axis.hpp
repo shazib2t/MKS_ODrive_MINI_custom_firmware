@@ -57,6 +57,7 @@ public:
         bool can_node_id_extended = false;
         uint32_t can_heartbeat_rate_ms = 100;
         uint32_t can_encoder_rate_ms = 10;
+        float32_t can_iq_rate_ms = 100;
 
         // custom setters
         Axis* parent = nullptr;
@@ -235,6 +236,7 @@ public:
     Homing_t homing_;
     uint32_t last_heartbeat_ = 0;
     uint32_t last_encoder_ = 0;
+    float32_t last_iq_ = 0.0;
 
     // watchdog
     uint32_t watchdog_current_value_= 0;

@@ -104,7 +104,7 @@ void CANSimple::handle_can_message(can_Message_t& msg) {
                 set_traj_vel_limit_callback(axis, msg);
                 break;
             case MSG_GET_IQ:
-                get_iq_callback(axis, msg);
+                get_iq_callback(axis);
                 break;
             case MSG_GET_SENSORLESS_ESTIMATES:
                 get_sensorless_estimates_callback(axis, msg);
@@ -320,8 +320,8 @@ void CANSimple::set_traj_inertia_callback(Axis* axis, can_Message_t& msg) {
     axis->controller_.config_.inertia = can_getSignal<float>(msg, 0, 32, true);
 }
 
-void CANSimple::get_iq_callback(Axis* axis, can_Message_t& msg) {
-    if (msg.rtr) {
+void CANSimple::get_iq_callback(Axis* axis) {
+    //if (msg.rtr) {
         can_Message_t txmsg;
         txmsg.id = axis->config_.can_node_id << NUM_CMD_ID_BITS;
         txmsg.id += MSG_GET_IQ;
@@ -345,7 +345,7 @@ void CANSimple::get_iq_callback(Axis* axis, can_Message_t& msg) {
         txmsg.buf[7] = floatBytes >> 24;
 
         odCAN->write(txmsg);
-    }
+    //}
 }
 
 void CANSimple::get_vbus_voltage_callback(Axis* axis, can_Message_t& msg) {

@@ -193,7 +193,7 @@ void ODriveCAN::send_heartbeat(Axis *axis) {
 }
 
 void ODriveCAN::get_encoder_estimates_callback(Axis *axis) {
-    // Handle heartbeat message
+    // Handle encoder message
     if (axis->config_.can_encoder_rate_ms > 0) {
         uint32_t now = osKernelSysTick();
         if ((now - axis->last_encoder_) >= axis->config_.can_encoder_rate_ms) {
@@ -203,6 +203,21 @@ void ODriveCAN::get_encoder_estimates_callback(Axis *axis) {
                     break;
             }
             axis->last_encoder_ = now;
+        }
+    }
+}
+
+void ODriveCAN::get_iq_callback(Axis *axis) {
+    // Handle iq message
+    if (axis->config_.can_iq_rate_ms > 0) {
+        uint32_t now = osKernelSysTick();
+        if ((now - axis->last_iq_) >= axis->config_.can_iq_rate_ms) {
+            switch (config_.protocol) {
+                case PROTOCOL_SIMPLE:
+                    CANSimple::get_iq_callback(axis);
+                    break;
+            }
+            axis->last_iq_ = now;
         }
     }
 }

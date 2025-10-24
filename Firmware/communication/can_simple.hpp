@@ -37,7 +37,8 @@ class CANSimple {
     static void handle_can_message(can_Message_t& msg);
     static void send_heartbeat(Axis* axis);
     static void get_encoder_estimates_callback(Axis* axis);
-
+    static void get_iq_callback(Axis* axis);
+    
    private:
     static void nmt_callback(Axis* axis, can_Message_t& msg);
     static void estop_callback(Axis* axis, can_Message_t& msg);
@@ -59,7 +60,7 @@ class CANSimple {
     static void set_traj_vel_limit_callback(Axis* axis, can_Message_t& msg);
     static void set_traj_accel_limits_callback(Axis* axis, can_Message_t& msg);
     static void set_traj_inertia_callback(Axis* axis, can_Message_t& msg);
-    static void get_iq_callback(Axis* axis, can_Message_t& msg);
+    //static void get_iq_callback(Axis* axis, can_Message_t& msg);
     static void get_sensorless_estimates_callback(Axis* axis, can_Message_t& msg);
     static void get_vbus_voltage_callback(Axis* axis, can_Message_t& msg);
     static void clear_errors_callback(Axis* axis, can_Message_t& msg);

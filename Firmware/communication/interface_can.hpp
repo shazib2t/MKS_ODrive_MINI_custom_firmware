@@ -6,6 +6,7 @@
 #include "fibre/protocol.hpp"
 #include "odrive_main.h"
 #include "can_helpers.hpp"
+#include <stm32f4xx_hal_can.h>
 
 #define CAN_CLK_HZ (42000000)
 #define CAN_CLK_MHZ (42)
@@ -38,6 +39,7 @@ class ODriveCAN : public ODriveIntf::CanIntf {
     void can_server_thread();
     void send_heartbeat(Axis *axis);
     void get_encoder_estimates_callback(Axis* axis);
+    void get_iq_callback(Axis* axis);
     void reinit_can();
 
     void set_error(Error error);
