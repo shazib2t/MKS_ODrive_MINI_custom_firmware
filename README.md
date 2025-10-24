@@ -1,5 +1,10 @@
 # Custom ODrive Firware for MKS-ODrive-Mini based on HW V3.6
 
+## DISCLAIMER: THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+YOU ARE SOLELY RESPONSIBLE FOR YOUR USE OF THIS SOFTWARE AND ANY CONSEQUENCES THAT MAY ARISE FROM ITS USE.
+
+
 ![ODrive Logo](https://static1.squarespace.com/static/58aff26de4fcb53b5efd2f02/t/59bf2a7959cc6872bd68be7e/1505700483663/Odrive+logo+plus+text+black.png?format=1000w)
 
 This project is all about accurately driving brushless motors, for cheap. The aim is to make it possible to use inexpensive brushless motors in high performance robotics projects, like [this](https://www.youtube.com/watch?v=WT4E5nb3KtY).
@@ -32,6 +37,7 @@ Please refer to the [Developer Guide](https://docs.odriverobotics.com/developer-
 * The SW Firmware is 0.5.1 as this is best known firmware for this low cost ODrive alternative from other vendor.
 * The firmware is compiled for V3.6 56V varient board. If you  have other varient please recompile this firmware.
 * Added Encoder estimates to publish in the CAN bus alongside heartbeat msg
+* Added Iq callback messages based on Ayeed Musa's Request in this branch
 * This changes mainly done for ODrive ROS2 package as there is no official support for V3.6 based hardware for encoder estimates.
 * The odrive ros2 version that is changed for this firmware is located in my github and the link is here: [https://github.com/shazib2t/ros_odrive](https://github.com/shazib2t/ros_odrive)
 
