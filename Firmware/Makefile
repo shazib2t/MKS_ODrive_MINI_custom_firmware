@@ -21,7 +21,7 @@ flash: all
 		-c exit
 
 flashbmp: all
-	/usr/share/arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc --ex 'target extended-remote $(BMP_PORT)' \
+	/usr/bin/arm-none-eabi-gcc --ex 'target extended-remote $(BMP_PORT)' \
 		--ex 'monitor swdp_scan' \
 		--ex 'attach 1' \
 		--ex 'load' \
@@ -30,13 +30,13 @@ flashbmp: all
 		$(FIRMWARE)
 
 gdb: all
-	/usr/share/arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc $(FIRMWARE) -x openocd.gdbinit
+	//usr/bin/arm-none-eabi-gcc $(FIRMWARE) -x openocd.gdbinit
 
 dfu: all
 	python3 ../tools/odrivetool $(if $(value SERIAL_NUMBER),--serial-number $(SERIAL_NUMBER),) dfu $(FIRMWARE_HEX)
 
 bmp: all
-	/usr/share/arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc --ex 'target extended-remote /dev/stlink' \
+	/usr/bin/arm-none-eabi--gcc --ex 'target extended-remote /dev/stlink' \
 		--ex 'monitor swdp_scan' \
 		--ex 'attach 1' \
 		--ex 'load' $(FIRMWARE)

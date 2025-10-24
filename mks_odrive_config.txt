@@ -14,7 +14,7 @@ odrv0.save_configuration()
 odrv0.axis0.motor.config.pole_pairs = 7
 odrv0.axis0.motor.config.calibration_current = 10
 odrv0.axis0.motor.config.requested_current_range = 60
-odrv0.axis0.motor.config.motor_type = MOTOR_TYPE_HIGH_CURRENT
+odrv0.axis0.motor.config.motor_type = MOTOR_TYPE_PMSM_CURRENT_CONTROL
 odrv0.save_configuration()
 
 odrv0.axis0.encoder.config.mode = ENCODER_MODE_SPI_ABS_AMS

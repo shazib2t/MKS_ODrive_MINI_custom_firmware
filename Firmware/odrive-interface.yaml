@@ -206,7 +206,7 @@ interfaces:
       config:
         c_is_class: False
         attributes:
-          baud_rate: readonly uint32
+          baud_rate: uint32
           protocol: Protocol
     functions:
       set_baud_rate: {in: {baudRate: uint32}}
