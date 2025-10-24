@@ -10,7 +10,8 @@ Encoder::Encoder(const EncoderHardwareConfig_t& hw_config,
     update_pll_gains();
 
     if (config.pre_calibrated) {
-        if (config.mode == Encoder::MODE_HALL || config.mode == Encoder::MODE_SINCOS)
+        //if (config.mode == Encoder::MODE_HALL || config.mode == Encoder::MODE_SINCOS)
+        if (config.mode != MODE_INCREMENTAL)
             is_ready_ = true;
         if (motor_config.motor_type == Motor::MOTOR_TYPE_ACIM)
             is_ready_ = true;
@@ -97,8 +98,8 @@ void Encoder::update_pll_gains() {
 
 void Encoder::check_pre_calibrated() {
     // TODO: restoring config from python backup is fragile here (ACIM motor type must be set first)
-    if (!is_ready_ && axis_->motor_.config_.motor_type != Motor::MOTOR_TYPE_ACIM)
-        config_.pre_calibrated = false;
+    //if (!is_ready_ && axis_->motor_.config_.motor_type != Motor::MOTOR_TYPE_ACIM)
+    //    config_.pre_calibrated = false;
     if (mode_ == MODE_INCREMENTAL && !index_found_)
         config_.pre_calibrated = false;
 }
@@ -386,9 +387,9 @@ void Encoder::abs_spi_cb(){
         case MODE_SPI_ABS_AMS: {
             uint16_t rawVal = abs_spi_dma_rx_[0];
             // check if parity is correct (even) and error flag clear
-            if (ams_parity(rawVal) || ((rawVal >> 14) & 1)) {
+            /*if (ams_parity(rawVal) || ((rawVal >> 14) & 1)) {
                 return;
-            }
+            }*/
             pos = rawVal & 0x3fff;
         } break;
 
